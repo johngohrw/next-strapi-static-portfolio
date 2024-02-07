@@ -29,8 +29,8 @@ export default async function Home() {
               </div>
 
               <div className="text-[22px] sm:text-[28px] variable-width-hero-text pt-8 pb-12 leading-[1.1] z-10">
-                I'm a designer and front-end developer based in Sitges, Spain,
-                working with the talented group at Upstatement.{' '}
+                I&apos;m a designer and front-end developer based in Sitges,
+                Spain, working with the talented group at Upstatement.{' '}
                 <span className="font-bold">
                   I am passionate about creating beautiful experiences that are
                   as exciting for visitors as they are beneficial for the
