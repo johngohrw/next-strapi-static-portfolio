@@ -1,14 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { useRef } from 'react';
-import { useLayoutEffect } from 'react';
-import { throttle } from 'lodash';
-import { createContext } from 'react';
 import { GenericReactHTMLNode } from '@/types';
-import { useContext } from 'react';
+import { createContext, useLayoutEffect, useRef, useState } from 'react';
 
-export const DEFAULT_CURSOR_SIZE = 18;
+export const DEFAULT_CURSOR_SIZE = 12;
 
 type CursorContextProps = {
   state: {
@@ -52,7 +47,7 @@ export function CursorProvider({ children, ...rest }: GenericReactHTMLNode) {
           height: `${size}px`,
           width: `${size}px`,
         }}
-      />
+      ></div>
       <CursorContext.Provider value={value}>{children}</CursorContext.Provider>
       <style jsx global>{`
         * {

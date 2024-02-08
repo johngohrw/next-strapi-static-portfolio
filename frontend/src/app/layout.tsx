@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Asar, Fraunces, Gentium_Book_Plus } from 'next/font/google';
 import './globals.css';
-import { CursorProvider } from '@/components/CursorProvider';
 
 const inter = Gentium_Book_Plus({
   subsets: ['latin'],
@@ -21,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={[inter.className, 'min-h-screen relative'].join(' ')}>
-        <CursorProvider>{children}</CursorProvider>
+        {children}
       </body>
     </html>
   );
