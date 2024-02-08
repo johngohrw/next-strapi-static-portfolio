@@ -1,4 +1,6 @@
+import { HoverableLink } from '@/components/HoverableLink';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function Home() {
   return (
@@ -30,12 +32,10 @@ export default async function Home() {
 
               <div className="text-[22px] sm:text-[28px] variable-width-hero-text pt-8 pb-12 leading-[1.1] z-10">
                 I&apos;m a designer and front-end developer based in Sitges,
-                Spain, working with the talented group at Upstatement.{' '}
-                <span className="font-bold">
-                  I am passionate about creating beautiful experiences that are
-                  as exciting for visitors as they are beneficial for the
-                  content creators who use them.
-                </span>
+                Spain, working with the talented group at Upstatement. I am
+                passionate about creating beautiful experiences that are as
+                exciting for visitors as they are beneficial for the content
+                creators who use them.
               </div>
             </div>
             <div className="flex-grow flex flex-col sm:flex-row max-h-[30vh] sm:min-h-[300px] xl:min-h-[400px] justify-between gap-8">
@@ -66,7 +66,19 @@ export default async function Home() {
                   <h4 className="font-medium text-sm font-sans mb-2 uppercase">
                     Contact Me
                   </h4>
-                  <button>meiyinooi97@gmail.com</button>
+                  <div className="flex flex-row gap-3">
+                    <div>
+                      <Link href="mailto:meiyinooi97@gmail.com">Email</Link>
+                    </div>
+                    <div>
+                      <HoverableLink href="https://www.linkedin.com/in/meiyinooi/">
+                        LinkedIn
+                      </HoverableLink>
+                    </div>
+                    <div>
+                      <Link href="https://github.com/mehhyin">GitHub</Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
