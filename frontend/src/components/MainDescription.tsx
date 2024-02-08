@@ -35,7 +35,7 @@ export function MainDescription({
         },
       ],
     ]);
-  }, [text]);
+  }, [text, animate]);
 
   return (
     <div

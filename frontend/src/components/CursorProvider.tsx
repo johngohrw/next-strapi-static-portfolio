@@ -26,7 +26,7 @@ export function CursorProvider({ children, ...rest }: GenericReactHTMLNode) {
       setMousePos({ x: e.clientX, y: e.clientY });
     document.addEventListener('mousemove', updateMouse);
     return () => document.removeEventListener('mousemove', updateMouse);
-  }, [overlayRef.current]);
+  }, [overlayRef]);
 
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [size, setSize] = useState<number>(DEFAULT_CURSOR_SIZE);

@@ -1,11 +1,7 @@
-import { HoverableLink } from '@/components/HoverableLink';
+import { Contact } from '@/components/Contact';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
-import { GenericReactHTMLNode } from '@/types';
-import { cn } from '@/utils/common';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Role } from '@/components/Role';
 
 export default async function Home() {
   return (
@@ -101,37 +97,5 @@ export default async function Home() {
         </div>
       </div>
     </>
-  );
-}
-
-export function Role({ className, ...rest }: GenericReactHTMLNode) {
-  return (
-    <div
-      className={cn('flex flex-col text-xl sm:text-3xl leading-[1]', className)}
-    >
-      <div>Data</div>
-      <div className="">Analyst</div>
-    </div>
-  );
-}
-
-export function Contact({ ...rest }: GenericReactHTMLNode) {
-  return (
-    <div {...rest}>
-      <h4 className="font-medium text-sm font-sans mb-2 uppercase">
-        Contact Me
-      </h4>
-      <div className="flex flex-row gap-3 sm:text-lg underline underline-offset-2">
-        <div>
-          <Link href="mailto:meiyinooi97@gmail.com">Email</Link>
-        </div>
-        <div>
-          <Link href="https://www.linkedin.com/in/meiyinooi/">LinkedIn</Link>
-        </div>
-        <div>
-          <Link href="https://github.com/mehhyin">GitHub</Link>
-        </div>
-      </div>
-    </div>
   );
 }
