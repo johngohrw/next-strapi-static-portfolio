@@ -58,8 +58,8 @@ export default async function Home() {
         <div className="w-full flex-grow lg:w-[50%] lg:ml-[50vw]">
           <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8">
             {/* <Role className="!hidden lg:!flex" /> */}
-            <div className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
-              <h4 className="font-medium text-sm font-sans mb-2 uppercase col-span-2">
+            <section className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
+              <h4 className="font-medium text-sm font-sans mb-4 uppercase col-span-2">
                 CAPABILITIES
               </h4>
               <ul className="col-span-4 list-decimal ml-4 sm:text-lg">
@@ -79,19 +79,48 @@ export default async function Home() {
                   Nisi ut aliquip ex ea commodo consequat.
                 </li>
               </ul>
-            </div>
-            <div className="">
+            </section>
+            <section className="">
               <h4 className="font-medium text-sm font-sans mb-4 uppercase">
                 PROJECTS
               </h4>
               <ProjectCarousel className="-mx-8 px-8" innerClassName="" />
-            </div>
-            <div className="">
-              <h4 className="font-medium text-sm font-sans mb-4 uppercase">
-                PROJECTS
+            </section>{' '}
+            <section className="grid grid-cols-1 lg:grid-cols-6">
+              <h4 className="font-medium text-sm font-sans mb-6 uppercase col-span-2">
+                EXPERIENCE
               </h4>
-              <ProjectCarousel className="-mx-8 px-8" innerClassName="" />
-            </div>
+              <div className="col-span-4 sm:text-lg">
+                <div className="mb-6">
+                  <div className="leading-tight font-bold">TDCX</div>
+                  <div className="text-sm">Business Analyst</div>
+                  <div className="text-sm opacity-50 mb-1">
+                    March 2020 - Present
+                  </div>
+                  <ul className="list-disc text-[16px] leading-snug pl-5">
+                    <li>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </li>
+                  </ul>
+                </div>
+                <div className="mb-6">
+                  <div className="leading-tight font-bold">TDCX</div>
+                  <div className="text-sm">Business Analyst</div>
+                  <div className="text-sm opacity-50 mb-1">
+                    March 2020 - Present
+                  </div>
+                  <ul className="list-disc text-[16px] leading-snug pl-5">
+                    <li>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
         <div className="bg-[#ac8ead] w-full sm:hidden">
