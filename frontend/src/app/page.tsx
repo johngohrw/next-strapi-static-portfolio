@@ -15,9 +15,9 @@ export default async function Home() {
                   className="aspect-square sm:hidden w-[64px] overflow-hidden mr-4 flex-shrink-0"
                   imageProps={{ className: 'object-cover' }}
                 />
-                <div className="text-xl sm:text-3xl flex flex-col leading-[1]">
+                <div className="text-2xl sm:text-4xl flex flex-col leading-[1]">
                   <div>Meiyin</div>
-                  <div className="sm:ml-11">Ooi</div>
+                  <div className="sm:ml-14">Ooi</div>
                 </div>
 
                 {/* <Role className="hidden sm:block lg:hidden" /> */}
