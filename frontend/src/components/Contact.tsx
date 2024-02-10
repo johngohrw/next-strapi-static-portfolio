@@ -1,5 +1,6 @@
 import { GenericReactHTMLNode } from '@/types';
 import Link from 'next/link';
+import { HoverableLink } from './HoverableLink';
 
 export function Contact({ ...rest }: GenericReactHTMLNode) {
   return (
@@ -9,13 +10,19 @@ export function Contact({ ...rest }: GenericReactHTMLNode) {
       </h4>
       <div className="flex flex-row gap-3 sm:text-lg underline underline-offset-2">
         <div>
-          <Link href="mailto:meiyinooi97@gmail.com">Email</Link>
+          <HoverableLink href="mailto:meiyinooi97@gmail.com">
+            Email
+          </HoverableLink>
         </div>
         <div>
-          <Link href="https://www.linkedin.com/in/meiyinooi/">LinkedIn</Link>
+          <HoverableLink href="https://www.linkedin.com/in/meiyinooi/">
+            LinkedIn
+          </HoverableLink>
         </div>
         <div>
-          <Link href="https://github.com/mehhyin">GitHub</Link>
+          <HoverableLink href="https://github.com/mehhyin">
+            GitHub
+          </HoverableLink>
         </div>
       </div>
     </div>

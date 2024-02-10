@@ -1,15 +1,15 @@
 import { Contact } from '@/components/Contact';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
-import { Role } from '@/components/Role';
+import { ProjectCarousel } from '@/components/ProjectCarousel';
 
 export default async function Home() {
   return (
     <>
       <div className="flex flex-col lg:flex-row min-h-full text-[#111]">
-        <div className="bg-[#ac8ead] w-full">
-          <div className="flex flex-col h-full p-8 justify-between">
-            <div>
+        <div className="bg-[#ac8ead] w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50%] overflow-auto no-scrollbar">
+          <div className="flex flex-col h-full p-8 py-16 lg:py-8 lg:pb-0 justify-between">
+            <div className="">
               <div className="flex flex-row sm:grid sm:grid-cols-2 relative items-center">
                 <ProfileImage
                   className="aspect-square sm:hidden w-[64px] overflow-hidden mr-4 flex-shrink-0"
@@ -20,7 +20,7 @@ export default async function Home() {
                   <div className="sm:ml-11">Ooi</div>
                 </div>
 
-                <Role className="hidden sm:block lg:hidden" />
+                {/* <Role className="hidden sm:block lg:hidden" /> */}
               </div>
 
               <MainDescription
@@ -32,12 +32,15 @@ export default async function Home() {
                 className="py-16 lg:pt-8 lg:pb-12 leading-[1.3] lg:leading-[1.1] z-10 "
               ></MainDescription>
             </div>
-            <div className="flex-grow flex flex-col sm:grid sm:grid-cols-2 sm:min-h-[300px] xl:min-h-[400px] justify-between">
-              <div className="mr-8 w-full flex items-end">
-                <ProfileImage className="aspect-[434/611] self-end h-[300px] lg:h-[260px] xl:h-[360px] hidden sm:block " />
+            <div className="flex-grow flex flex-col sm:flex-row items-end lg:pb-8">
+              <div className="w-full hidden sm:flex flex-col justify-end h-full max-h-[300px] aspect-[434/611] mr-8">
+                <ProfileImage
+                  className="h-full"
+                  imageProps={{ className: 'object-left object-contain' }}
+                />
               </div>
 
-              <div className="flex flex-col justify-between w-full">
+              <div className="flex flex-col justify-between h-full">
                 <div className="sm:mb-12">
                   <h4 className="font-medium text-sm font-sans mb-2 uppercase">
                     Awards
@@ -52,10 +55,10 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full flex-grow">
-          <div className="flex flex-col h-full p-8">
-            <Role className="!hidden lg:!flex" />
-            <div className="lg:pt-8 grid grid-cols-1 lg:grid-cols-6 mb-8">
+        <div className="w-full flex-grow lg:w-[50%] lg:ml-[50vw]">
+          <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8">
+            {/* <Role className="!hidden lg:!flex" /> */}
+            <div className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
               <h4 className="font-medium text-sm font-sans mb-2 uppercase col-span-2">
                 CAPABILITIES
               </h4>
@@ -78,15 +81,16 @@ export default async function Home() {
               </ul>
             </div>
             <div className="">
-              <h4 className="font-medium text-sm font-sans mb-2 uppercase">
+              <h4 className="font-medium text-sm font-sans mb-4 uppercase">
                 PROJECTS
               </h4>
-              {/* <div className="border grid">
-                <div>lol</div>
-                <div>lol</div>
-                <div>lol</div>
-                <div>lol</div>
-              </div> */}
+              <ProjectCarousel className="-mx-8 px-8" innerClassName="" />
+            </div>
+            <div className="">
+              <h4 className="font-medium text-sm font-sans mb-4 uppercase">
+                PROJECTS
+              </h4>
+              <ProjectCarousel className="-mx-8 px-8" innerClassName="" />
             </div>
           </div>
         </div>

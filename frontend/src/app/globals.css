@@ -7,11 +7,11 @@
   --background-rgb: 214, 219, 220;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   height: 100%;
 }
-
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -34,7 +34,16 @@ body {
 
 @media (min-width: 1024px) {
   .variable-width-hero-text {
-    font-size: calc( 24px + (50 - 28) * ( 100vw - 768px ) / (2000 - 768) ) !important;
-  
-  }  
+    font-size: calc(
+      24px + (50 - 28) * (100vw - 768px) / (2000 - 768)
+    ) !important;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
