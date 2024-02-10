@@ -50,7 +50,7 @@ export default async function Home() {
                     Typewolf, Communication Arts, FastCo Design, and more.
                   </div>
                 </div>
-                <Contact className="hidden sm:block" />
+                <Contact className="mt-16 lg:mt-0" />
               </div>
             </div>
           </div>
@@ -123,8 +123,8 @@ export default async function Home() {
             </section>
           </div>
         </div>
-        <div className="bg-[#ac8ead] w-full sm:hidden">
-          <div className="flex flex-col h-full p-8">
+        <div className="bg-[#ac8ead] w-full h-[200px] sm:hidden">
+          <div className="flex flex-col h-full p-8 justify-center">
             <Contact className="" />
           </div>
         </div>
