@@ -216,7 +216,12 @@ function Slide({
       )}
       {...rest}
     >
-      <div className="w-[260px] h-[260px] bg-gray-500/10 overflow-hidden relative">
+      <div
+        className="w-[260px] h-[260px] bg-gray-500/10 overflow-hidden relative duration-1000"
+        style={{
+          ...(isActive ? { opacity: 1 } : { opacity: 0.5 }),
+        }}
+      >
         <Image
           src={imageSrc}
           alt="project image"
@@ -243,19 +248,4 @@ function Slide({
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="aspect-[16/5] flex flex-row">
-              <div className="relative h-full aspect-[4/3]">
-                <Image src="https://picsum.photos/200" alt="image" fill />
-              </div>
-              <div className="flex-grow ml-2">
-                <div className="font-bold text-md uppercase font-sans">
-                  Sample Project That I&apos;ve Been Working On
-                </div>
-                <div>2016</div>
-                <div>Here&apos;s the description for this project</div>
-              </div>
-            </div> */
 }
