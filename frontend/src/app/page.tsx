@@ -1,36 +1,56 @@
+import { strapiRequest } from '@/api';
 import { CapabilitiesList } from '@/components/CapabilitiesList';
 import { Contact } from '@/components/Contact';
 import { ExperienceList } from '@/components/ExperienceList';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
 import { ProjectCarousel } from '@/components/ProjectCarousel';
-import { Experience, Link, Project } from '@/types';
+import { Experience, Project } from '@/types';
 
 export default async function Home() {
-  const foregroundColor = '#111';
-  const backgroundColor = 'rgb(214, 219, 220)';
-  const themeColor = '#ac8ead';
+  const projectsList: Project[] = (
+    await strapiRequest(
+      '/api/projects?populate[links][populate]=*&populate[coverImage]=true',
+    )
+  ).data
+    .map((item: any) => item.attributes)
+    .map((item: any) => ({
+      ...item,
+      coverImage: `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${item.coverImage.data.attributes.url}`,
+    }));
 
-  const firstName = 'Meiyin';
-  const lastName = 'Ooi';
+  const mainPageData = (
+    await strapiRequest(
+      '/api/main-page?populate[contactLinks][populate]=*&populate[profileImage]=true',
+    )
+  ).data.attributes;
 
-  const profileImageSrc = 'profile.jpg';
+  const {
+    foregroundColor,
+    backgroundColor,
+    themeColor,
+    firstName,
+    lastName,
+    profileImage,
+    mainDescriptionText,
+    subtextDescription,
+    subtextTitle,
+    contactLinks: contactList,
+  } = mainPageData;
+  const profileImageSrc = `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${profileImage.data.attributes.url}`;
 
-  const mainDescriptionText = `I'm a designer and front-end developer based in Sitges, Spain, working with the talented group at Upstatement. I am passionate about creating beautiful experiences that are as exciting for visitors as they are beneficial for the content creators who use them.`;
+  const capabilitiesList: string[] = (
+    await strapiRequest('/api/skills?populate=*')
+  ).data.map((item: any) => item.attributes.text);
 
-  const subtextTitle = 'AWARDS';
-  const subtextDescription = `My work has been recognized by SPD, the Webbys, SiteInspire, Typewolf, Communication Arts, FastCo Design, and more.`;
-
-  const contactList: Link[] = [
-    { label: 'Email', href: 'mailto:meiyinooi97@gmail.com' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/meiyinooi/' },
-    { label: 'GitHub', href: 'https://github.com/mehhyin' },
-    { label: 'CV', href: '#' },
-  ];
-
-  const capabilitiesList = [''];
-  const projectsList: Project[] = [];
-  const experienceList: Experience[] = [];
+  const experienceList: Experience[] = (
+    await strapiRequest('/api/experiences?populate[Bullets][populate]=*')
+  ).data
+    .map((item: any) => item.attributes)
+    .map((item: any) => ({
+      ...item,
+      bullets: item.Bullets.map((bullet: any) => bullet.text),
+    }));
 
   return (
     <>
