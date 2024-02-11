@@ -28,7 +28,7 @@ export function ProjectCarousel({
       Autoplay({
         delay: 5000,
         stopOnMouseEnter: true,
-        stopOnInteraction: false,
+        stopOnInteraction: true,
       }),
     ],
   );
@@ -161,7 +161,7 @@ function Slide({
           src={imageSrc}
           alt="project image"
           fill
-          className="duration-1000"
+          className="duration-1000 object-cover"
           style={{
             ...(isActive
               ? {}
