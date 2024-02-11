@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sample_category_bullet_texts",
+  "info": {
+    "displayName": "String",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_pages",
+  "info": {
+    "singularName": "main-page",
+    "pluralName": "main-pages",
+    "displayName": "Main Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "foregroundColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "themeColor": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mainDescriptionText": {
+      "type": "text"
+    },
+    "subtextTitle": {
+      "type": "string"
+    },
+    "subtextDescription": {
+      "type": "text"
+    },
+    "contactLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "subtypes.link"
+    }
+  }
+}

@@ -1,34 +1,27 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
+import { EmblaCarouselType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect, useState } from 'react';
 import { IoMdArrowDropleft } from 'react-icons/io';
 
-import { GenericReactHTMLNode } from '@/types';
+import { GenericReactHTMLNode, Link, Project } from '@/types';
 import { cn } from '@/utils/common';
 import Image from 'next/image';
-import Link from 'next/link';
 import { HoverableLink } from './HoverableLink';
-
-type Project = {
-  year: number;
-  title: string;
-  image: string;
-  description: string;
-  links: {
-    label: string;
-    href: string;
-  }[];
-};
 
 export function ProjectCarousel({
   className,
   innerClassName,
+  themeColor = '#777',
   projects = mockProjects,
   ...rest
-}: { innerClassName?: string; projects?: Project[] } & GenericReactHTMLNode) {
+}: {
+  innerClassName?: string;
+  projects?: Project[];
+  themeColor?: string;
+} & GenericReactHTMLNode) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
     [
@@ -84,11 +77,12 @@ export function ProjectCarousel({
         <div className={cn('flex flex-row', innerClassName)}>
           {projects.map((proj, index) => (
             <Slide
-              imageSrc={proj.image}
+              imageSrc={proj.coverImage}
               className="cursor-pointer shadow-md"
               isActive={index === selectedIndex}
               key={index}
               onClick={() => scrollTo(index)}
+              themeColor={themeColor}
             />
           ))}
         </div>
@@ -107,22 +101,24 @@ export function ProjectCarousel({
           </button>
         </div>
       </div>
-      <div className="mt-4">
-        <div className="text-xl">
-          {selectedProject.title}{' '}
-          <span className="opacity-40 text-[16px]">
-            ({selectedProject.year})
-          </span>
+      {selectedProject && (
+        <div className="pt-2">
+          <div className="text-xl my-2">
+            {selectedProject.title}{' '}
+            <span className="opacity-40 text-[16px]">
+              ({selectedProject.year})
+            </span>
+          </div>
+          <div>{selectedProject.description}</div>
+          <div className="mt-2 flex flex-row gap-3 sm:text-lg underline underline-offset-2 justify-end">
+            {selectedProject.links.map((link) => (
+              <HoverableLink key={link.label} href={link.href}>
+                {link.label}
+              </HoverableLink>
+            ))}
+          </div>
         </div>
-        <div>{selectedProject.description}</div>
-        <div className="mt-2 flex flex-row gap-3 sm:text-lg underline underline-offset-2 justify-end">
-          {selectedProject.links.map((link) => (
-            <HoverableLink key={link.label} href={link.href}>
-              {link.label}
-            </HoverableLink>
-          ))}
-        </div>
-      </div>
+      )}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -139,9 +135,14 @@ export function ProjectCarousel({
 function Slide({
   isActive = false,
   imageSrc,
+  themeColor,
   className,
   ...rest
-}: { isActive?: boolean; imageSrc: string } & GenericReactHTMLNode) {
+}: {
+  themeColor: string;
+  isActive?: boolean;
+  imageSrc: string;
+} & GenericReactHTMLNode) {
   return (
     <div
       className={cn(
@@ -170,7 +171,7 @@ function Slide({
         <div
           className="absolute inset-0 duration-1000"
           style={{
-            background: '#ac8ead',
+            background: themeColor,
             mixBlendMode: 'color',
             ...(isActive
               ? { opacity: 0 }
@@ -188,7 +189,7 @@ const mockProjects = [
   {
     year: 2016,
     title: 'This is The Title of The Project',
-    image: 'https://picsum.photos/200',
+    coverImage: 'https://picsum.photos/200',
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
   minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -204,7 +205,7 @@ const mockProjects = [
   {
     year: 2018,
     title: 'Another Title of The Project',
-    image: 'https://picsum.photos/201',
+    coverImage: 'https://picsum.photos/201',
     description: `Occaecat cupidatat non pr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
   minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -219,7 +220,7 @@ const mockProjects = [
   {
     year: 2021,
     title: 'A Great Project',
-    image: 'https://picsum.photos/202',
+    coverImage: 'https://picsum.photos/202',
     description: `Duis aute irure dolor in
     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
@@ -235,7 +236,7 @@ const mockProjects = [
   {
     year: 2022,
     title: 'Project That You Are Proud Of',
-    image: 'https://picsum.photos/203',
+    coverImage: 'https://picsum.photos/203',
     description: `Ut enim ad
     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
     aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -251,7 +252,7 @@ const mockProjects = [
   {
     year: 2023,
     title: 'Project That You Are Proud Of 2',
-    image: 'https://picsum.photos/204',
+    coverImage: 'https://picsum.photos/204',
     description: `Ut enim ad
     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
     aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -267,7 +268,7 @@ const mockProjects = [
   {
     year: 2024,
     title: 'Project That You Are Proud Of 3',
-    image: 'https://picsum.photos/205',
+    coverImage: 'https://picsum.photos/205',
     description: `Ut enim ad
     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
     aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -1,12 +1,5 @@
-import { GenericReactHTMLNode } from '@/types';
+import { Experience, GenericReactHTMLNode } from '@/types';
 import { cn } from '@/utils/common';
-
-export type Experience = {
-  company: string;
-  role: string;
-  duration: string;
-  bullets: string[];
-};
 
 export function ExperienceList({
   experienceList = mockList,

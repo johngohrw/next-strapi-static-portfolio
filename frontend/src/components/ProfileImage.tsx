@@ -8,9 +8,10 @@ import Image from 'next/image';
 export function ProfileImage({
   className,
   style,
+  src,
   imageProps = { className: 'object-contain' },
   ...rest
-}: { imageProps?: GenericReactHTMLNode } & GenericReactHTMLNode) {
+}: { src: string; imageProps?: GenericReactHTMLNode } & GenericReactHTMLNode) {
   return (
     <motion.div
       initial={{ opacity: 0, translateY: '-10%' }}
@@ -23,7 +24,7 @@ export function ProfileImage({
       className={cn('relative', className)}
     >
       <div {...rest}>
-        <Image src="/profile.jpg" alt="Image" fill {...imageProps} />
+        <Image src={src} alt="Image" fill {...imageProps} />
       </div>
     </motion.div>
   );

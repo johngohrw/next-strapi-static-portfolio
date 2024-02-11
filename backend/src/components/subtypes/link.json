@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_subtypes_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

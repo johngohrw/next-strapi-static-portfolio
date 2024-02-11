@@ -1,43 +1,81 @@
+import { CapabilitiesList } from '@/components/CapabilitiesList';
 import { Contact } from '@/components/Contact';
 import { ExperienceList } from '@/components/ExperienceList';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
 import { ProjectCarousel } from '@/components/ProjectCarousel';
-import { GenericReactHTMLNode } from '@/types';
-import { cn } from '@/utils/common';
+import { Experience, Link, Project } from '@/types';
 
 export default async function Home() {
+  const foregroundColor = '#111';
+  const backgroundColor = 'rgb(214, 219, 220)';
+  const themeColor = '#ac8ead';
+
+  const firstName = 'Meiyin';
+  const lastName = 'Ooi';
+
+  const profileImageSrc = 'profile.jpg';
+
+  const mainDescriptionText = `I'm a designer and front-end developer based in Sitges, Spain, working with the talented group at Upstatement. I am passionate about creating beautiful experiences that are as exciting for visitors as they are beneficial for the content creators who use them.`;
+
+  const subtextTitle = 'AWARDS';
+  const subtextDescription = `My work has been recognized by SPD, the Webbys, SiteInspire, Typewolf, Communication Arts, FastCo Design, and more.`;
+
+  const contactList: Link[] = [
+    { label: 'Email', href: 'mailto:meiyinooi97@gmail.com' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/meiyinooi/' },
+    { label: 'GitHub', href: 'https://github.com/mehhyin' },
+    { label: 'CV', href: '#' },
+  ];
+
+  const capabilitiesList = [''];
+  const projectsList: Project[] = [];
+  const experienceList: Experience[] = [];
+
   return (
     <>
-      <div className="flex flex-col lg:flex-row min-h-full text-[#111]">
-        <div className="bg-[#ac8ead] w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50vw] overflow-auto no-scrollbar">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            body {
+              background: ${backgroundColor} !important;
+            }
+          `,
+        }}
+      />
+      <div
+        className="flex flex-col lg:flex-row min-h-full"
+        style={{ color: foregroundColor }}
+      >
+        <div
+          className="w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50vw] overflow-auto no-scrollbar"
+          style={{
+            background: themeColor,
+          }}
+        >
           <div className="flex flex-col h-full p-8 py-16 lg:py-8 lg:pb-0 justify-between">
             <div className="">
-              <div className="flex flex-row sm:grid sm:grid-cols-2 relative items-center">
+              <div className="flex flex-row relative items-center">
                 <ProfileImage
+                  src={profileImageSrc}
                   className="aspect-square sm:hidden w-[64px] overflow-hidden mr-4 flex-shrink-0"
                   imageProps={{ className: 'object-cover' }}
                 />
-                <div className="text-2xl sm:text-4xl flex flex-col leading-[1]">
-                  <div>Meiyin</div>
-                  <div className="sm:ml-14">Ooi</div>
+                <div className="text-2xl sm:text-4xl flex flex-col sm:items-end leading-[1]">
+                  {firstName && <div className="">{firstName}</div>}
+                  {lastName && <div className="">{lastName}</div>}
                 </div>
-
-                {/* <Role className="hidden sm:block lg:hidden" /> */}
               </div>
 
               <MainDescription
-                text="I'm a designer and front-end developer based in Sitges,
-                Spain, working with the talented group at Upstatement. I am
-                passionate about creating beautiful experiences that are as
-                exciting for visitors as they are beneficial for the content
-                creators who use them."
+                text={mainDescriptionText}
                 className="py-16 lg:pt-8 lg:pb-12 leading-[1.3] lg:leading-[1.1] z-10 "
               ></MainDescription>
             </div>
             <div className="flex-grow flex flex-col sm:flex-row items-end lg:pb-8">
               <div className="w-full hidden sm:flex flex-col justify-end h-full max-h-[300px] aspect-[434/611] mr-8">
                 <ProfileImage
+                  src={profileImageSrc}
                   className="h-full"
                   imageProps={{ className: 'object-left object-contain' }}
                 />
@@ -45,61 +83,58 @@ export default async function Home() {
 
               <div className="flex flex-col justify-between h-full">
                 <div className="sm:mb-12">
-                  <h4 className="font-medium text-sm font-sans mb-2 uppercase">
-                    Awards
-                  </h4>
-                  <div className="sm:text-lg">
-                    My work has been recognized by SPD, the Webbys, SiteInspire,
-                    Typewolf, Communication Arts, FastCo Design, and more.
-                  </div>
+                  {subtextTitle && (
+                    <h4 className="font-medium text-sm font-sans mb-2 uppercase">
+                      {subtextTitle}
+                    </h4>
+                  )}
+                  {subtextDescription && (
+                    <div className="sm:text-lg">{subtextDescription}</div>
+                  )}
                 </div>
-                <Contact className="mt-16 lg:mt-0" />
+                <Contact className="mt-16 lg:mt-0" contactList={contactList} />
               </div>
             </div>
           </div>
         </div>
         <div className="w-full flex-grow lg:w-[50vw] lg:ml-[50vw]">
           <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8">
-            {/* <Role className="!hidden lg:!flex" /> */}
             <section className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
               <h4 className="font-medium text-sm font-sans mb-4 uppercase col-span-2">
                 CAPABILITIES
               </h4>
-              <ul className="col-span-4 list-decimal ml-4 sm:text-lg">
-                <li className="pl-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li className="pl-2">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur.
-                </li>
-                <li className="pl-2">Quis nostrud exercitation ullamco.</li>
-                <li className="pl-2">
-                  In voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur.
-                </li>
-                <li className="pl-2">
-                  Nisi ut aliquip ex ea commodo consequat.
-                </li>
-              </ul>
+              <CapabilitiesList capabilitiesList={capabilitiesList} />
             </section>
-            <section className="">
+            <section className="mb-6">
               <h4 className="font-medium text-sm font-sans mb-4 uppercase">
                 PROJECTS
               </h4>
-              <ProjectCarousel className="-mx-8 px-8" innerClassName="" />
+              <ProjectCarousel
+                className="-mx-8 px-8"
+                innerClassName=""
+                themeColor={themeColor}
+                projects={projectsList}
+              />
             </section>{' '}
             <section className="grid grid-cols-1 lg:grid-cols-6">
               <h4 className="font-medium text-sm font-sans mb-6 uppercase col-span-2">
                 EXPERIENCE
               </h4>
-              <ExperienceList className="col-span-4" />
+              <ExperienceList
+                className="col-span-4"
+                experienceList={experienceList}
+              />
             </section>
           </div>
         </div>
-        <div className="bg-[#ac8ead] w-full h-[200px] sm:hidden">
+        <div
+          className="w-full h-[200px] sm:hidden"
+          style={{
+            background: themeColor,
+          }}
+        >
           <div className="flex flex-col h-full p-8 justify-center">
-            <Contact className="" />
+            <Contact contactList={contactList} />
           </div>
         </div>
       </div>

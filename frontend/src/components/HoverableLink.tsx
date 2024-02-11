@@ -1,4 +1,5 @@
 'use client';
+
 import { GenericReactHTMLNode } from '@/types';
 import { cn } from '@/utils/common';
 import { useHover } from '@uidotdev/usehooks';
@@ -21,7 +22,7 @@ export function HoverableLink({
       >
         {children}
         <div
-          className="absolute top-[50%] left-[50%] rounded-full bg-yellow-500 aspect-square duration-200 floater mix-blend-color"
+          className="absolute top-[50%] left-[50%] rounded-full bg-yellow-500 aspect-square duration-200 floater mix-blend-color pointer-events-none"
           style={{
             ...(isHover ? { height: '80px' } : { height: 0 }),
           }}

@@ -781,6 +781,145 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiExperienceExperience extends Schema.CollectionType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'Experience';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    company: Attribute.String;
+    role: Attribute.String;
+    duration: Attribute.String;
+    Bullets: Attribute.Component<'primitive-fields.bullet-text', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMainPageMainPage extends Schema.SingleType {
+  collectionName: 'main_pages';
+  info: {
+    singularName: 'main-page';
+    pluralName: 'main-pages';
+    displayName: 'Main Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    foregroundColor: Attribute.String;
+    backgroundColor: Attribute.String;
+    themeColor: Attribute.String;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    profileImage: Attribute.Media;
+    mainDescriptionText: Attribute.Text;
+    subtextTitle: Attribute.String;
+    subtextDescription: Attribute.Text;
+    contactLinks: Attribute.Component<'subtypes.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::main-page.main-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::main-page.main-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Project';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    year: Attribute.String;
+    title: Attribute.String;
+    coverImage: Attribute.Media;
+    description: Attribute.Text;
+    links: Attribute.Component<'subtypes.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSkillSkill extends Schema.CollectionType {
+  collectionName: 'skills';
+  info: {
+    singularName: 'skill';
+    pluralName: 'skills';
+    displayName: 'Skill';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -799,6 +938,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::experience.experience': ApiExperienceExperience;
+      'api::main-page.main-page': ApiMainPageMainPage;
+      'api::project.project': ApiProjectProject;
+      'api::skill.skill': ApiSkillSkill;
     }
   }
 }
