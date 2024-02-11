@@ -94,7 +94,7 @@ export function ProjectCarousel({
   innerClassName,
   projects = mockProjects,
   ...rest
-}: { innerClassName?: string; projects: Project[] } & GenericReactHTMLNode) {
+}: { innerClassName?: string; projects?: Project[] } & GenericReactHTMLNode) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
     [
