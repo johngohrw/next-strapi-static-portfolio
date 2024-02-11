@@ -12,11 +12,89 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { HoverableLink } from './HoverableLink';
 
+type Project = {
+  year: number;
+  title: string;
+  image: string;
+  description: string;
+  links: {
+    label: string;
+    href: string;
+  }[];
+};
+
+const mockProjects = [
+  {
+    year: 2016,
+    title: 'This is The Title of The Project',
+    image: 'https://picsum.photos/200',
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2018,
+    title: 'Another Title of The Project',
+    image: 'https://picsum.photos/201',
+    description: `Occaecat cupidatat non pr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo conse eu fugiat nulla
+  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit aum.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2021,
+    title: 'A Great Project',
+    image: 'https://picsum.photos/202',
+    description: `Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2022,
+    title: 'Project That You Are Proud Of',
+    image: 'https://picsum.photos/203',
+    description: `Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur.`,
+    links: [
+      { label: 'Demo', href: '#' },
+      { label: 'Github', href: '#' },
+    ],
+  },
+];
+
 export function ProjectCarousel({
   className,
   innerClassName,
+  projects = mockProjects,
   ...rest
-}: { innerClassName?: string } & GenericReactHTMLNode) {
+}: { innerClassName?: string; projects: Project[] } & GenericReactHTMLNode) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
     [
@@ -31,6 +109,8 @@ export function ProjectCarousel({
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const selectedProject = projects[selectedIndex];
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -68,9 +148,9 @@ export function ProjectCarousel({
     <>
       <div className={cn('embla relative', className)} ref={emblaRef} {...rest}>
         <div className={cn('flex flex-row', innerClassName)}>
-          {Array.from(Array(5).keys()).map((index) => (
+          {projects.map((proj, index) => (
             <Slide
-              imageSrc="https://picsum.photos/200"
+              imageSrc={proj.image}
               className="cursor-pointer shadow-md"
               isActive={index === selectedIndex}
               key={index}
@@ -95,21 +175,18 @@ export function ProjectCarousel({
       </div>
       <div className="mt-4">
         <div className="text-xl">
-          This is The Title of The Project{' '}
-          <span className="opacity-40 text-[16px]">(2016)</span>
+          {selectedProject.title}{' '}
+          <span className="opacity-40 text-[16px]">
+            ({selectedProject.year})
+          </span>
         </div>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+        <div>{selectedProject.description}</div>
         <div className="mt-2 flex flex-row gap-3 sm:text-lg underline underline-offset-2 justify-end">
-          <HoverableLink href="#">GitHub</HoverableLink>
-          <HoverableLink href="#">Demo</HoverableLink>
+          {selectedProject.links.map((link) => (
+            <HoverableLink key={link.label} href={link.href}>
+              {link.label}
+            </HoverableLink>
+          ))}
         </div>
       </div>
       <style
