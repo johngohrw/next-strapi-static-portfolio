@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <>
       <div className="flex flex-col lg:flex-row min-h-full text-[#111]">
-        <div className="bg-[#ac8ead] w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50%] overflow-auto no-scrollbar">
+        <div className="bg-[#ac8ead] w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50vw] overflow-auto no-scrollbar">
           <div className="flex flex-col h-full p-8 py-16 lg:py-8 lg:pb-0 justify-between">
             <div className="">
               <div className="flex flex-row sm:grid sm:grid-cols-2 relative items-center">
@@ -55,7 +55,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full flex-grow lg:w-[50%] lg:ml-[50vw]">
+        <div className="w-full flex-grow lg:w-[50vw] lg:ml-[50vw]">
           <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8">
             {/* <Role className="!hidden lg:!flex" /> */}
             <section className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
