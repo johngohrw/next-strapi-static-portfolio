@@ -23,72 +23,6 @@ type Project = {
   }[];
 };
 
-const mockProjects = [
-  {
-    year: 2016,
-    title: 'This is The Title of The Project',
-    image: 'https://picsum.photos/200',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit anim id est laborum.`,
-    links: [
-      { label: 'Github', href: '#' },
-      { label: 'Demo', href: '#' },
-    ],
-  },
-  {
-    year: 2018,
-    title: 'Another Title of The Project',
-    image: 'https://picsum.photos/201',
-    description: `Occaecat cupidatat non pr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo conse eu fugiat nulla
-  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit aum.`,
-    links: [
-      { label: 'Github', href: '#' },
-      { label: 'Demo', href: '#' },
-    ],
-  },
-  {
-    year: 2021,
-    title: 'A Great Project',
-    image: 'https://picsum.photos/202',
-    description: `Duis aute irure dolor in
-    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat.`,
-    links: [
-      { label: 'Github', href: '#' },
-      { label: 'Demo', href: '#' },
-    ],
-  },
-  {
-    year: 2022,
-    title: 'Project That You Are Proud Of',
-    image: 'https://picsum.photos/203',
-    description: `Ut enim ad
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in
-  culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-  pariatur.`,
-    links: [
-      { label: 'Demo', href: '#' },
-      { label: 'Github', href: '#' },
-    ],
-  },
-];
-
 export function ProjectCarousel({
   className,
   innerClassName,
@@ -249,3 +183,101 @@ function Slide({
     </div>
   );
 }
+
+const mockProjects = [
+  {
+    year: 2016,
+    title: 'This is The Title of The Project',
+    image: 'https://picsum.photos/200',
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2018,
+    title: 'Another Title of The Project',
+    image: 'https://picsum.photos/201',
+    description: `Occaecat cupidatat non pr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo conse eu fugiat nulla
+  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit aum.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2021,
+    title: 'A Great Project',
+    image: 'https://picsum.photos/202',
+    description: `Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat.`,
+    links: [
+      { label: 'Github', href: '#' },
+      { label: 'Demo', href: '#' },
+    ],
+  },
+  {
+    year: 2022,
+    title: 'Project That You Are Proud Of',
+    image: 'https://picsum.photos/203',
+    description: `Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur.`,
+    links: [
+      { label: 'Demo', href: '#' },
+      { label: 'Github', href: '#' },
+    ],
+  },
+  {
+    year: 2023,
+    title: 'Project That You Are Proud Of 2',
+    image: 'https://picsum.photos/204',
+    description: `Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur.`,
+    links: [
+      { label: 'Demo', href: '#' },
+      { label: 'Github', href: '#' },
+    ],
+  },
+  {
+    year: 2024,
+    title: 'Project That You Are Proud Of 3',
+    image: 'https://picsum.photos/205',
+    description: `Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur.`,
+    links: [
+      { label: 'Demo', href: '#' },
+      { label: 'Github', href: '#' },
+    ],
+  },
+];

@@ -1,7 +1,10 @@
 import { Contact } from '@/components/Contact';
+import { ExperienceList } from '@/components/ExperienceList';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
 import { ProjectCarousel } from '@/components/ProjectCarousel';
+import { GenericReactHTMLNode } from '@/types';
+import { cn } from '@/utils/common';
 
 export default async function Home() {
   return (
@@ -90,36 +93,7 @@ export default async function Home() {
               <h4 className="font-medium text-sm font-sans mb-6 uppercase col-span-2">
                 EXPERIENCE
               </h4>
-              <div className="col-span-4 sm:text-lg">
-                <div className="mb-6">
-                  <div className="leading-tight font-bold">TDCX</div>
-                  <div className="text-sm">Business Analyst</div>
-                  <div className="text-sm opacity-50 mb-1">
-                    March 2020 - Present
-                  </div>
-                  <ul className="list-disc text-[16px] leading-snug pl-5">
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </li>
-                  </ul>
-                </div>
-                <div className="mb-6">
-                  <div className="leading-tight font-bold">TDCX</div>
-                  <div className="text-sm">Business Analyst</div>
-                  <div className="text-sm opacity-50 mb-1">
-                    March 2020 - Present
-                  </div>
-                  <ul className="list-disc text-[16px] leading-snug pl-5">
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ExperienceList className="col-span-4" />
             </section>
           </div>
         </div>
