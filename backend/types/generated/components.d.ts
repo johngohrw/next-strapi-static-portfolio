@@ -32,7 +32,7 @@ export interface ContentComponentsNumberedList extends Schema.Component {
 export interface ContentComponentsProjectList extends Schema.Component {
   collectionName: 'components_content_components_project_lists';
   info: {
-    displayName: 'Project List';
+    displayName: 'Project Carousel';
     icon: 'stack';
     description: '';
   };
@@ -111,7 +111,7 @@ export interface SubtypesProject extends Schema.Component {
   attributes: {
     title: Attribute.String;
     year: Attribute.String;
-    description: Attribute.RichText;
+    description: Attribute.Text;
     coverImage: Attribute.Media;
     links: Attribute.Component<'subtypes.link', true>;
   };
