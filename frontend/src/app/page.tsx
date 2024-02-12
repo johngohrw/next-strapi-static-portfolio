@@ -12,6 +12,8 @@ export default async function Home() {
   );
   const siteData = siteResponse.data[0].attributes;
 
+  console.log(JSON.stringify(siteData, null, 2));
+
   const {
     foregroundColor,
     backgroundColor,

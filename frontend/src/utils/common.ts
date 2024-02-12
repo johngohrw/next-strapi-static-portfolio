@@ -12,5 +12,8 @@ export function getRandomInt(min: number, max: number) {
 }
 
 export function getStrapiImage(data: any, fieldName: string) {
-  return `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${data[fieldName].data.attributes.url}`;
+  if (fieldName in data && data[fieldName]?.data?.attributes?.url) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${data[fieldName].data.attributes.url}`;
+  }
+  return '';
 }

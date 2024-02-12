@@ -16,7 +16,9 @@ export function ProjectComponent({
         innerClassName=""
         projects={items.map((item: any) => ({
           ...item,
-          coverImage: getStrapiImage(item, 'coverImage'),
+          ...(item.coverImage
+            ? { coverImage: getStrapiImage(item, 'coverImage') }
+            : {}),
         }))}
       />
     </section>
