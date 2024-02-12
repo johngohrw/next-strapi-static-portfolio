@@ -9,17 +9,18 @@ import { createElement } from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteResponse = await strapiRequest(
-    `/api/sites?filters[siteIdentifier][$eq]=${process.env.NEXT_PUBLIC_STRAPI_SITE_IDENTIFIER}&populate=*`,
+    `/api/sites?filters[siteIdentifier][$eq]=${process.env.NEXT_PUBLIC_STRAPI_SITE_IDENTIFIER}&populate[mainPage][populate]=*&populate=*`,
   );
   const siteData = siteResponse?.data?.[0]?.attributes ?? {};
-  const {
-    title = 'Portfolio Website',
-    description = 'Welcome to my portfolio website',
-  } = siteData ?? {};
+  const { title = 'Portfolio Website', mainPage: mainPageData } =
+    siteData ?? {};
+
+  const { mainDescriptionText = 'Welcome to my portfolio website.' } =
+    mainPageData ?? {};
 
   return {
     title,
-    description,
+    description: mainDescriptionText,
   };
 }
 
@@ -30,7 +31,7 @@ export default async function Home() {
 
   const siteData = siteResponse?.data?.[0]?.attributes ?? {};
 
-  console.log(JSON.stringify(siteData, null, 2));
+  // console.log(JSON.stringify(siteData, null, 2));
 
   const {
     foregroundColor,
