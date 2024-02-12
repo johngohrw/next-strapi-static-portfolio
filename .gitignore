@@ -137,3 +137,6 @@ exports
 dist
 build
 .strapi-updater.json
+
+
+backend/public/uploads/*
