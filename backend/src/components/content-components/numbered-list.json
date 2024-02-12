@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_content_components_numbered_lists",
+  "info": {
+    "displayName": "List",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "listType": {
+      "type": "enumeration",
+      "enum": [
+        "disc",
+        "decimal",
+        "none"
+      ],
+      "required": true,
+      "default": "disc"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitive-fields.bullet-text"
+    }
+  }
+}

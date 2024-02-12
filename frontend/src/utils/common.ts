@@ -10,3 +10,7 @@ export function getRandomInt(min: number, max: number) {
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
+
+export function getStrapiImage(data: any, fieldName: string) {
+  return `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${data[fieldName].data.attributes.url}`;
+}

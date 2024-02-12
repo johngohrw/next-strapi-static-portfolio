@@ -1,39 +1,32 @@
 {
-  "kind": "collectionType",
-  "collectionName": "projects",
+  "collectionName": "components_subtypes_projects",
   "info": {
-    "singularName": "project",
-    "pluralName": "projects",
     "displayName": "Project",
+    "icon": "stack",
     "description": ""
   },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
+  "options": {},
   "attributes": {
-    "year": {
-      "type": "string"
-    },
     "title": {
       "type": "string"
     },
+    "year": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
     "coverImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
-    },
-    "description": {
-      "type": "text"
+      ],
+      "type": "media",
+      "multiple": false
     },
     "links": {
-      "displayName": "Link",
       "type": "component",
       "repeatable": true,
       "component": "subtypes.link"

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sites",
+  "info": {
+    "singularName": "site",
+    "pluralName": "sites",
+    "displayName": "Site",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "foregroundColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "themeColor": {
+      "type": "string"
+    },
+    "mainPage": {
+      "type": "component",
+      "repeatable": false,
+      "component": "pages.main-page",
+      "required": true
+    },
+    "rightContent": {
+      "type": "dynamiczone",
+      "components": [
+        "content-components.numbered-list",
+        "content-components.experience-timeline",
+        "content-components.project-list"
+      ],
+      "required": true
+    },
+    "siteIdentifier": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

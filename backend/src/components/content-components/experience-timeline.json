@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_content_components_experience_timelines",
+  "info": {
+    "displayName": "Experience Timeline",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "displayName": "Experience",
+      "type": "component",
+      "repeatable": true,
+      "component": "subtypes.experience"
+    }
+  }
+}

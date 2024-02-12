@@ -1,76 +1,58 @@
 import { strapiRequest } from '@/api';
-import { CapabilitiesList } from '@/components/CapabilitiesList';
 import { Contact } from '@/components/Contact';
-import { ExperienceList } from '@/components/ExperienceList';
 import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
-import { ProjectCarousel } from '@/components/ProjectCarousel';
-import { Experience, Project } from '@/types';
+import { componentMap } from '@/components/StrapiComponents/map';
+import { getStrapiImage } from '@/utils/common';
+import { createElement } from 'react';
 
 export default async function Home() {
-  const projectsList: Project[] = (
-    await strapiRequest(
-      '/api/projects?populate[links][populate]=*&populate[coverImage]=true',
-    )
-  ).data
-    .map((item: any) => item.attributes)
-    .map((item: any) => ({
-      ...item,
-      coverImage: `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${item.coverImage.data.attributes.url}`,
-    }));
-
-  const mainPageData = (
-    await strapiRequest(
-      '/api/main-page?populate[contactLinks][populate]=*&populate[profileImage]=true',
-    )
-  ).data.attributes;
+  const siteResponse = await strapiRequest(
+    `/api/sites?filters[siteIdentifier][$eq]=${process.env.NEXT_PUBLIC_STRAPI_SITE_IDENTIFIER}&populate=deep&populate=*`,
+  );
+  const siteData = siteResponse.data[0].attributes;
 
   const {
     foregroundColor,
     backgroundColor,
     themeColor,
+    mainPage: mainPageData,
+    rightContent,
+  } = siteData;
+
+  const {
     firstName,
     lastName,
-    profileImage,
     mainDescriptionText,
     subtextDescription,
     subtextTitle,
     contactLinks: contactList,
   } = mainPageData;
-  const profileImageSrc = `${process.env.NEXT_PUBLIC_STRAPI_MEDIA_ORIGIN}${profileImage.data.attributes.url}`;
 
-  const capabilitiesList: string[] = (
-    await strapiRequest('/api/skills?populate=*')
-  ).data.map((item: any) => item.attributes.text);
-
-  const experienceList: Experience[] = (
-    await strapiRequest('/api/experiences?populate[Bullets][populate]=*')
-  ).data
-    .map((item: any) => item.attributes)
-    .map((item: any) => ({
-      ...item,
-      bullets: item.Bullets.map((bullet: any) => bullet.text),
-    }));
+  const profileImageSrc = getStrapiImage(mainPageData, 'profileImage');
 
   return (
     <>
       <style
         dangerouslySetInnerHTML={{
           __html: `
+            :root {
+              --background-color: ${backgroundColor};
+              --foreground-color: ${foregroundColor};
+              --theme-color: ${themeColor};
+            }
             body {
-              background: ${backgroundColor} !important;
+              background: var(--background-color);
+              color: var(--foreground-color);
             }
           `,
         }}
       />
-      <div
-        className="flex flex-col lg:flex-row min-h-full"
-        style={{ color: foregroundColor }}
-      >
+      <div className="flex flex-col lg:flex-row min-h-full">
         <div
           className="w-full lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:w-[50vw] overflow-auto no-scrollbar"
           style={{
-            background: themeColor,
+            background: 'var(--theme-color)',
           }}
         >
           <div className="flex flex-col h-full p-8 py-16 lg:py-8 lg:pb-0 justify-between">
@@ -118,39 +100,20 @@ export default async function Home() {
           </div>
         </div>
         <div className="w-full flex-grow lg:w-[50vw] lg:ml-[50vw]">
-          <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8">
-            <section className="lg:pt-28 grid grid-cols-1 lg:grid-cols-6 mb-12">
-              <h4 className="font-medium text-sm font-sans mb-4 uppercase col-span-2">
-                CAPABILITIES
-              </h4>
-              <CapabilitiesList capabilitiesList={capabilitiesList} />
-            </section>
-            <section className="mb-6">
-              <h4 className="font-medium text-sm font-sans mb-4 uppercase">
-                PROJECTS
-              </h4>
-              <ProjectCarousel
-                className="-mx-8 px-8"
-                innerClassName=""
-                themeColor={themeColor}
-                projects={projectsList}
-              />
-            </section>{' '}
-            <section className="grid grid-cols-1 lg:grid-cols-6">
-              <h4 className="font-medium text-sm font-sans mb-6 uppercase col-span-2">
-                EXPERIENCE
-              </h4>
-              <ExperienceList
-                className="col-span-4"
-                experienceList={experienceList}
-              />
-            </section>
+          <div className="flex flex-col h-full px-8 py-16 lg:py-8 gap-8 lg:pt-28">
+            {rightContent.map((item: any, index: number) =>
+              createElement(componentMap[item.__component], {
+                attributes: item,
+                key: index,
+                className: 'mb-6',
+              }),
+            )}
           </div>
         </div>
         <div
           className="w-full h-[200px] sm:hidden"
           style={{
-            background: themeColor,
+            background: 'var(--theme-color)',
           }}
         >
           <div className="flex flex-col h-full p-8 justify-center">

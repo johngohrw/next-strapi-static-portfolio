@@ -1,26 +1,12 @@
 {
-  "kind": "singleType",
-  "collectionName": "main_pages",
+  "collectionName": "components_pages_main_pages",
   "info": {
-    "singularName": "main-page",
-    "pluralName": "main-pages",
-    "displayName": "Main Page",
+    "displayName": "Main Page Fields",
+    "icon": "medium",
     "description": ""
   },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
+  "options": {},
   "attributes": {
-    "foregroundColor": {
-      "type": "string"
-    },
-    "backgroundColor": {
-      "type": "string"
-    },
-    "themeColor": {
-      "type": "string"
-    },
     "firstName": {
       "type": "string"
     },

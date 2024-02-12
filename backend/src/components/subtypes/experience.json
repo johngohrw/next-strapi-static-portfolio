@@ -1,18 +1,12 @@
 {
-  "kind": "collectionType",
-  "collectionName": "experiences",
+  "collectionName": "components_subtypes_experiences",
   "info": {
-    "singularName": "experience",
-    "pluralName": "experiences",
     "displayName": "Experience",
-    "description": ""
+    "icon": "seed"
   },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
+  "options": {},
   "attributes": {
-    "company": {
+    "name": {
       "type": "string"
     },
     "role": {
@@ -21,8 +15,7 @@
     "duration": {
       "type": "string"
     },
-    "Bullets": {
-      "displayName": "BulletText",
+    "bullets": {
       "type": "component",
       "repeatable": true,
       "component": "primitive-fields.bullet-text"

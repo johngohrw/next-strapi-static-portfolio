@@ -6,7 +6,7 @@ export type Link = {
 };
 
 export type Experience = {
-  company: string;
+  name: string;
   role: string;
   duration: string;
   bullets: string[];

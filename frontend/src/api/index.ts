@@ -46,17 +46,3 @@ function generateErrorResponse(message: string) {
     message,
   };
 }
-
-// export function strapi() {
-//     const options = {
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-//         },
-//       };
-//       const response = await fetch(
-//         `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/projects?populate=*`,
-//         options,
-//       );
-//       const { data: projects } = await response.json();
-// }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * main-page router
+ * site router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::main-page.main-page');
+module.exports = createCoreRouter('api::site.site');
