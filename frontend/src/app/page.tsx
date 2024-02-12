@@ -10,7 +10,8 @@ export default async function Home() {
   const siteResponse = await strapiRequest(
     `/api/sites?filters[siteIdentifier][$eq]=${process.env.NEXT_PUBLIC_STRAPI_SITE_IDENTIFIER}&populate=deep&populate=*`,
   );
-  const siteData = siteResponse.data[0].attributes;
+
+  const siteData = siteResponse?.data?.[0]?.attributes ?? {};
 
   console.log(JSON.stringify(siteData, null, 2));
 
@@ -20,7 +21,7 @@ export default async function Home() {
     themeColor,
     mainPage: mainPageData,
     rightContent,
-  } = siteData;
+  } = siteData ?? {};
 
   const {
     firstName,
@@ -29,7 +30,7 @@ export default async function Home() {
     subtextDescription,
     subtextTitle,
     contactLinks: contactList,
-  } = mainPageData;
+  } = mainPageData ?? {};
 
   const profileImageSrc = getStrapiImage(mainPageData, 'profileImage');
 
