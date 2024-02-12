@@ -4,7 +4,24 @@ import { MainDescription } from '@/components/MainDescription';
 import { ProfileImage } from '@/components/ProfileImage';
 import { componentMap } from '@/components/StrapiComponents/map';
 import { getStrapiImage } from '@/utils/common';
+import { Metadata } from 'next';
 import { createElement } from 'react';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteResponse = await strapiRequest(
+    `/api/sites?filters[siteIdentifier][$eq]=${process.env.NEXT_PUBLIC_STRAPI_SITE_IDENTIFIER}&populate=*`,
+  );
+  const siteData = siteResponse?.data?.[0]?.attributes ?? {};
+  const {
+    title = 'Portfolio Website',
+    description = 'Welcome to my portfolio website',
+  } = siteData ?? {};
+
+  return {
+    title,
+    description,
+  };
+}
 
 export default async function Home() {
   const siteResponse = await strapiRequest(
