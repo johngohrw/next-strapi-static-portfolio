@@ -47,6 +47,7 @@ export default async function Home() {
     mainDescriptionText,
     subtextDescription,
     subtextTitle,
+    contactLinksTitle,
     contactLinks: contactList,
   } = mainPageData ?? {};
 
@@ -104,7 +105,7 @@ export default async function Home() {
                 />
               </div>
 
-              <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-col justify-between h-full overflow-hidden">
                 <div className="sm:mb-12">
                   {subtextTitle && (
                     <h4 className="font-medium text-sm font-sans mb-2 uppercase">
@@ -115,7 +116,11 @@ export default async function Home() {
                     <div className="sm:text-lg">{subtextDescription}</div>
                   )}
                 </div>
-                <Contact className="mt-16 lg:mt-0" contactList={contactList} />
+                <Contact
+                  className="mt-16 lg:mt-0"
+                  contactList={contactList}
+                  title={contactLinksTitle}
+                />
               </div>
             </div>
           </div>

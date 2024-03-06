@@ -59,6 +59,7 @@ export interface PagesMainPage extends Schema.Component {
     subtextTitle: Attribute.String;
     subtextDescription: Attribute.Text;
     contactLinks: Attribute.Component<'subtypes.link', true>;
+    contactLinksTitle: Attribute.String;
   };
 }
 
