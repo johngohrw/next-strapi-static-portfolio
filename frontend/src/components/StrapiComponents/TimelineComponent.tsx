@@ -14,7 +14,7 @@ export function TimelineComponent({
       {...rest}
     >
       <h4 className="font-medium text-sm font-sans mb-6 uppercase col-span-2">
-        EXPERIENCE
+        {title}
       </h4>
       <ExperienceList className="col-span-4" experienceList={items} />
     </section>

@@ -105,7 +105,7 @@ export default async function Home() {
                 />
               </div>
 
-              <div className="flex flex-col justify-between h-full overflow-hidden">
+              <div className="flex flex-col justify-between h-full">
                 <div className="sm:mb-12">
                   {subtextTitle && (
                     <h4 className="font-medium text-sm font-sans mb-2 uppercase">

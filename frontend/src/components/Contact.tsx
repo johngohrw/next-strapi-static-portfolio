@@ -9,7 +9,7 @@ export function Contact({
   return (
     <div {...rest}>
       <h4 className="font-medium text-sm font-sans mb-2 uppercase">{title}</h4>
-      <div className="flex flex-row gap-3 sm:text-lg underline underline-offset-2 whitespace-nowrap overflow-hidden flex-wrap">
+      <div className="flex flex-row gap-3 sm:text-lg underline underline-offset-2 whitespace-nowrap flex-wrap">
         {contactList.map((link, index) => (
           <div key={index}>
             <HoverableLink href={link.href ?? '#'}>{link.label}</HoverableLink>
